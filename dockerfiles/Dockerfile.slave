@@ -1,0 +1,53 @@
+FROM ubuntu:bionic
+MAINTAINER Fabian Schmidt
+
+# Add locales after locale-gen as needed
+# Upgrade packages on image
+# Preparations for sshd
+RUN apt-get -q update &&\
+    apt-get install -y locales
+RUN locale-gen en_US.UTF-8 &&\
+    DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends &&\
+    DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends openssh-server &&\
+    apt-get -q autoremove &&\
+    apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin &&\
+    sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd &&\
+	mkdir -p /var/run/sshd
+
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+# Install JDK 8
+RUN apt-get -q update &&\
+	apt-get install -y openjdk-8-jdk
+
+# Install git
+RUN apt-get -q update &&\
+	apt-get install -y git
+
+# Install firefox
+RUN apt-get -q update &&\
+    apt-get install -y firefox=59.0.2+build1-0ubuntu1
+
+# Install sudo
+RUN apt-get -q update &&\
+    apt-get install -y sudo
+
+# Set user jenkins to the image
+RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
+    echo "jenkins:jenkins" | chpasswd
+
+# Set root password
+RUN echo "root:jenkins" | chpasswd
+
+# Allow jenkins user to use sudo
+RUN echo "sudo ALL=(ALL:ALL) ALL" >> /etc/sudoers &&\
+    adduser jenkins sudo
+
+# Standard SSH port
+EXPOSE 22
+
+# Default command
+CMD ["/usr/sbin/sshd", "-D"]
