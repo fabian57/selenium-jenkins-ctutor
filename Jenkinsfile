@@ -22,8 +22,8 @@ pipeline {
                 sh 'cd test && echo "jenkins" | sudo -S ./selenium.sh'
             }
         }
-        stage ("Clean up") {
-            steps {
+        post {
+            always {
                 echo 'Remove file'
                 sh 'echo "jenkins" | sudo -S rm -rf /data/*'
             
