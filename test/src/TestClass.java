@@ -72,6 +72,10 @@ public class TestClass {
             Assert.assertTrue(expectedFunction.contains(generatedFunction));
         } catch (Exception e) {
             System.out.println(e);
+        } catch (AssertionError e) {
+            System.out.println("Generated Function:");
+            System.out.println(generatedFunction);
+            Assert.fail("Generated function did not match expected result");
         }
     }
 
@@ -86,7 +90,12 @@ public class TestClass {
             Assert.assertTrue(expectedFunction.contains(generatedFunction));
         } catch (Exception e) {
             System.out.println(e);
+        }catch (AssertionError e) {
+            System.out.println("Generated Function:");
+            System.out.println(generatedFunction);
+            Assert.fail("Generated function did not match expected result");
         }
+
     }
 
     @Test (priority=3)
@@ -164,7 +173,12 @@ public class TestClass {
             Assert.assertTrue(expectedFunction.contains(generatedFunction));
         } catch (Exception e) {
             System.out.println(e);
+        }catch (AssertionError e) {
+            System.out.println("Generated Function:");
+            System.out.println(generatedFunction);
+            Assert.fail("Generated function did not match expected result");
         }
+
     }
 
     @Test (priority=4)
@@ -179,7 +193,12 @@ public class TestClass {
             Assert.assertTrue(expectedFunction.contains(generatedFunction));
         } catch (Exception e) {
             System.out.println(e);
+        }catch (AssertionError e) {
+            System.out.println("Generated Function:");
+            System.out.println(generatedFunction);
+            Assert.fail("Generated function did not match expected result");
         }
+
     }
 
     @Test (priority=4)
@@ -195,7 +214,12 @@ public class TestClass {
             Assert.assertTrue(expectedFunction.contains(generatedFunction));
         } catch (Exception e) {
             System.out.println(e);
+        }catch (AssertionError e) {
+            System.out.println("Generated Function:");
+            System.out.println(generatedFunction);
+            Assert.fail("Generated function did not match expected result");
         }
+
     }
 
     @Test (priority=5)
@@ -211,7 +235,12 @@ public class TestClass {
             Assert.assertTrue(expectedFunction.contains(generatedFunction));
         } catch (Exception e) {
             System.out.println(e);
+        }catch (AssertionError e) {
+            System.out.println("Generated Function:");
+            System.out.println(generatedFunction);
+            Assert.fail("Generated function did not match expected result");
         }
+
     }
 
 
