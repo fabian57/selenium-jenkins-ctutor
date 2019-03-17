@@ -19,7 +19,7 @@ pipeline {
         stage ("Testing") {
             steps {
                 echo 'Start test'
-                sh 'cd selenium_demo && echo "jenkins" | sudo -S ./selenium.sh'
+                sh 'cd test && echo "jenkins" | sudo -S ./selenium.sh'
             }
         }
         stage ("Clean up") {
