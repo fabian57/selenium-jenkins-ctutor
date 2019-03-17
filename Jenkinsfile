@@ -22,16 +22,16 @@ pipeline {
                 sh 'cd test && echo "jenkins" | sudo -S ./selenium.sh'
             }
         }
-        post {
-            always {
-                echo 'Remove file'
-                sh 'echo "jenkins" | sudo -S rm -rf /data/*'
-            
-                echo 'Stop nginx container'
-                sh 'echo "jenkins" | sudo -S docker stop selenium_site'
-                echo 'Delete nginx container'
-                sh 'echo "jenkins" | sudo -S docker rm selenium_site'
-            }
+    }
+    post {
+        always {
+            echo 'Remove file'
+            sh 'echo "jenkins" | sudo -S rm -rf /data/*'
+        
+            echo 'Stop nginx container'
+            sh 'echo "jenkins" | sudo -S docker stop selenium_site'
+            echo 'Delete nginx container'
+            sh 'echo "jenkins" | sudo -S docker rm selenium_site'
         }
     }
 }
