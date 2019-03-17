@@ -1,12 +1,12 @@
 pipeline {
     agent { label 'docker-selenium-slave' }
     stages {
-        stage ("Checkout") {
-            steps {
-                echo 'Pull site and tests'
-                git url: 'https://github.com/fabian57/selenium-jenkins-demo.git'
-            }
-        }
+        //stage ("Checkout") {
+        //    steps {
+        //        echo 'Pull site and tests'
+        //        git url: 'https://github.com/fabian57/selenium-jenkins-demo.git'
+        //    }
+        //}
         stage ("Start server") {
             steps {
                 echo 'Copy website into volume'
