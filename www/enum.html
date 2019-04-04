@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>C Tutor - Enumeration</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>C Tutor - Enumeration</h1>
+        </header>
+        <main>
+            <div id="config">
+                <form>
+                    <!-- Enter enumname and description -->
+                    <div class="form-element">
+                        <label for="enumName">Enumerationsname:</label>
+                        <input type="text" name="enumName" id="enumName" onkeyup="changeEnumName()">
+                        <textarea name="enumDescIn" id="enumDescIn" onkeyup="changeEnumDesc()"></textarea>
+                    </div>
+                    <!-- Enter enum integer constants -->
+                    <div class="form-element">
+                        <!-- Add constant -->
+                        <div id="addKonst">
+                            <label for="constName">Name der Konstante:</label>
+                            <input type="text" name="constName" id="constName">
+                            <label for="constValue">Optionaler Dezimalwert:</label>
+                            <input type="number" name="constValue" id="constValue">
+                            <button type="button" class="btn" id="add_const" onclick="addConst()">+</button>
+                        </div>
+                        <!-- Remove constant -->
+                        <div id="rm">
+                            <label for="ConstList">Konstantenliste:</label>
+                            <select name="ConstList" id="ConstList"></select>
+                            <button type="button" class="btn" id="rm_const" onclick="rmConst()">-</button>
+                        </div>
+                    </div>
+                    <!-- Copy generated code -->
+                    <div class="form-element">
+                        <button type="button" class="btn" id="copy-btn" onclick="copy()">Copy</button>
+                    </div>
+                </form>
+            </div>
+            <div id="src">
+                /** <br>
+                &nbsp;* \enum <span id="enumNameOut">Enumerationsname noch nicht festgelegt.</span> <br>
+                &nbsp;* \brief <span id="enumDescOut">Enumeration nicht beschrieben.</span> <br>
+                &nbsp;*/ <br>
+
+                enum <span id="enumerationNameSpan">enum_name</span>
+                {<br>
+                    <span id="constantsSpan">&emsp;integer_constants <br></span>
+                };
+            </div>
+        </main>
+    </div>
+    <script src="enum.js"></script>
+</body>
+</html>

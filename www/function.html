@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>C Tutor - Funktion</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>C Tutor - Funktion</h1>
+        </header>
+        <main>
+            <div id="config">
+                <form>
+                    <!-- Enter functionname and description -->
+                    <div class="form-element">
+                        <label for="funcName">Funktionsname:</label>
+                        <input type="text" name="funcName" id="funcName" onkeyup="changeFuncName()">
+                        <textarea name="funcDescIn" id="funcDescIn" onkeyup="changeFuncDesc()"></textarea>
+                        <label for="normal">Normale Funktion:</label>
+                        <input type="radio" name="visibilityIn" value="normal" id="normal" onclick="toggleVisibility()">
+                        <label for="static">Hilfsfunktion:</label>
+                        <input type="radio" name="visibilityIn" value="static" id="static" onclick="toggleVisibility()">
+                    </div>
+                    <div class="form-element">
+                        <!-- Choose if function has parameters -->
+                        <div class="paramChoice">
+                            <label for="noParameter">Keine Parameter:</label>
+                            <input type="radio" name="Parameter" id="noParameter" value="noparam" onclick="hideParamDef()">
+                            <label for="Parameter">Parameter:</label>
+                            <input type="radio" name="Parameter" id="Parameter" value="param" onclick="showParamDef()">
+                        </div>
+                        <!-- Define and add parameter -->
+                        <div class="paramDefinition">
+                            <div id="addParam">
+                                <label for="paramName">Parametername:</label>
+                                <input type="text" name="paramName" id="paramName">
+                                <label for="paramType">Typ:</label>
+                                <select name="paramType" id="paramType">
+                                    <option value="bool">Warheitswert</option>
+                                    <option value="char">Zeichen</option>
+                                    <option value="int">Ganze Zahl</option>
+                                    <option value="double">Dezimalzahl</option>
+                                    <option value="string">Text</option>
+                                </select>
+                                <label for="list">Liste:</label>
+                                <input type="checkbox" name="list" id="list">
+                                <textarea name="paramsDescIn" id="paramsDescIn"></textarea>
+                                <button type="button" class="btn" id="add_param" onclick="addParam()">+</button>
+                            </div>
+                            <!-- Remove parameter -->
+                            <div id="rm">
+                                <label for="ParamList">Parameterliste:</label>
+                                <select name="ParamList" id="ParamList"></select>
+                                <button type="button" class="btn" id="rm_param" onclick="rmParam()">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Define return type -->
+                    <div class="form-element">
+                        <label for="returnType">Rueckgabewert:</label>
+                        <select name="returnType" id="returnType" onchange="returnTypeFunc()">
+                            <option value="none"></option>
+                            <option value="void">Kein Rueckgabewert</option>
+                            <option value="bool">Warheitswert</option>
+                            <option value="char">Zeichen</option>
+                            <option value="int">Ganze Zahl</option>
+                            <option value="double">Dezimalzahl</option>
+                            <option value="string">Text</option>
+                        </select>
+                        <textarea name="returnDescIn" id="returnDescIn" onkeyup="changeReturnDesc()"></textarea>
+                    </div>
+                    <!-- Create datatype -->
+                    <div class="form-element">
+                        <label>Datentyp</label>
+                        <label for="struct">Zusammengesetzter typ:</label>
+                        <input type="radio" name="datatype" id="struct">
+                        <label for="enum">Aufzaehltyp:</label>
+                        <input type="radio" name="datatype" id="enum">
+                        <label for="typeName">Datentypname:</label>
+                        <input type="text" name="typeName" id="typeName">
+                        <label for="ownTypes">Eigene Datentypen:</label>
+                        <select name="typeList" id="typeList"></select>
+                        <button type="button" class="btn" id="add_type" onclick="addType()">+</button>
+                        <button type="button" class="btn" id="rm_type" onclick="rmType()">-</button>
+                    </div>
+                    <!-- Copy generated code -->
+                    <div class="form-element">
+                        <button type="button" class="btn" id="copy-btn" onclick="copy()">Copy</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Show generated code -->
+            <div id="src">
+                /** <br>
+                &nbsp;* \fn <span id="funcNameOut">Funktionsname noch nicht festgelegt.</span> <br>
+                &nbsp;* \brief <span id="funcDescOut">Funktion nicht beschrieben.</span> <br>
+                <span id="paramsDescOut">&nbsp;*<br></span> 
+                &nbsp;* \return <span id="returnDescOut">Rueckgabetyp noch nicht festgelegt.</span> <br>
+                &nbsp;*/ <br>
+
+                <span id="visibilityOut"></span>
+                <span id="returnTypeSpan">return_type</span>
+                <span id="functionNameSpan">function_name</span>
+                (<span id="parametersSpan"></span>);
+            </div>
+        </main>
+    </div>
+    <script src="function.js"></script>
+</body>
+</html>

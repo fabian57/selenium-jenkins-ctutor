@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>C Tutor - Modul</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>C Tutor - Modul</h1>
+        </header>
+        <main>
+            <div id="config">
+                <form>
+                    <div class="form-element">
+                        <label for="modulName">Modulname:</label>
+                        <input type="text" name="modulName" id="modulName" onkeyup="changeModulName()">
+                        <textarea name="modulDescIn" id="modulDescIn" onkeyup="changeModulDesc()"></textarea>
+                    </div>
+                    <div class="form-element">
+                        <label for="unit">Unit Test</label>
+                        <input type="checkbox" name="unit" id="unit" onclick="unitTest()">
+                        <label for="io">Ein-/Ausgabe für Implementierung</label>
+                        <input type="checkbox" name="io" id="io" onclick="iostream()">
+                    </div>
+                    <!-- Copy generated code -->
+                    <div class="form-element">
+                        <button type="button" class="btn" id="copy-h-btn" onclick="copy('h-file')">Copy H-File</button>
+                        <button type="button" class="btn" id="copy-c-btn" onclick="copy('c-file')">Copy C-File</button>
+                    </div>
+                </form>
+            </div>
+            <div id="src">
+                <div id="h-file">
+                    /* filename: <span class="modulNameOut">Modulname</span>.h */ <br>
+                    #ifndef <span class="modulNameOut">Modulname</span>_H_INCLUDED <br>
+                    #define <span class="modulNameOut">Modulname</span>_H_INCLUDED <br>
+                    /* Deklaration der Schnittstelle <TODO: Modulname>. */ <br>
+                    /* Description: <br>&emsp;<span id="modulDescOut"></span> <br>*/  <br>
+                    #endif /* <span class="modulNameOut">Modulname</span>_H_INCLUDED */ <br>
+                </div>
+                <hr>
+                <div id="c-file">
+                        /* filename: <span class="modulNameOut">Modulname</span>.cpp */ <br>
+                        /* Implementierung der Schnittstelle <span class="modulNameOut">Modulname</span> */ <br>
+                        #include "<span class="modulNameOut">Modulname</span>.h" <br>
+                        <span id="ioOut">#include &lt;iostream&gt; <br> using namespace std;</span> <br>
+                        <span id="unitOut">
+                        #ifdef UNIT_TEST_<span class="modulNameOut">Modulname</span> <br>
+                        int main() { <br>
+                            &emsp;/* Implementierung der Testfaelle */ <br>
+                            &emsp;return 0; <br>
+                        } <br>
+                        #endif <br>
+                        </span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="module.js"></script>
+</body>
+</html>

@@ -3,7 +3,10 @@
 <suite name="Default suite">
   <test name="Default test" verbose="2">
     <classes>
-        <class name="TestClass"/>
+        <class name="FunctionTestClass"/>
+        <class name="EnumTestClass"/>
+        <class name="StructTestClass"/>
+        <class name="ModulTestClass"/>
     </classes>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->

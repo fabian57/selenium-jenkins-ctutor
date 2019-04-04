@@ -21,7 +21,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestClass {
+public class FunctionTestClass {
 	private WebDriver driver;
 
 	private String baseUrl;
@@ -35,7 +35,7 @@ public class TestClass {
         options.setHeadless(true);
 		driver = new FirefoxDriver(options);
 
-		baseUrl = System.getProperty("containerURL", "http://127.0.0.1:8080/index.html");
+		baseUrl = System.getProperty("containerURL", "http://127.0.0.1:8080/function.html")+"/function.html";
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();

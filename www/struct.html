@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>C Tutor - Struktur</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>C Tutor - Struktur</h1>
+        </header>
+        <main>
+            <div id="config">
+                <form>
+                   <!-- Enter structname and description -->
+                   <div class="form-element">
+                        <label for="structName">Strukturname:</label>
+                        <input type="text" name="structName" id="structName" onkeyup="changeStructName()">
+                        <textarea name="structDescIn" id="structDescIn" onkeyup="changeStructDesc()"></textarea>
+                    </div>
+                    <div class="form-element">
+                        <!-- Define and add member -->
+                        <div class="memberDefinition">
+                            <div id="addMember">
+                                <label for="memberName">Wertname:</label>
+                                <input type="text" name="memberName" id="memberName">
+                                <label for="memberType">Typ:</label>
+                                <select name="memberType" id="memberType">
+                                    <option value="bool">Warheitswert</option>
+                                    <option value="char">Zeichen</option>
+                                    <option value="int">Ganze Zahl</option>
+                                    <option value="double">Dezimalzahl</option>
+                                    <option value="string">Text</option>
+                                </select>
+                                <label for="list">Liste:</label>
+                                <input type="checkbox" name="list" id="list">
+                                <textarea name="membersDescIn" id="membersDescIn"></textarea>
+                                <button type="button" class="btn" id="add_member" onclick="addMember()">+</button>
+                            </div>
+                            <!-- Remove member -->
+                            <div id="rm">
+                                <label for="MemberList">Wertliste:</label>
+                                <select name="MemberList" id="MemberList"></select>
+                                <button type="button" class="btn" id="rm_member" onclick="rmMember()">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Create datatype -->
+                    <div class="form-element">
+                        <label>Datentyp</label>
+                        <label for="struct">Zusammengesetzter typ:</label>
+                        <input type="radio" name="datatype" id="struct">
+                        <label for="enum">Aufzaehltyp:</label>
+                        <input type="radio" name="datatype" id="enum">
+                        <label for="typeName">Datentypname:</label>
+                        <input type="text" name="typeName" id="typeName">
+                        <label for="ownTypes">Eigene Datentypen:</label>
+                        <select name="typeList" id="typeList"></select>
+                        <button type="button" class="btn" id="add_type" onclick="addType()">+</button>
+                        <button type="button" class="btn" id="rm_type" onclick="rmType()">-</button>
+                    </div>
+                    <!-- Copy generated code -->
+                    <div class="form-element">
+                        <button type="button" class="btn" id="copy-btn" onclick="copy()">Copy</button>
+                    </div>
+                </form>
+            </div>
+            <div id="src">
+                /** <br>
+                &nbsp;* \struct <span id="structNameOut">Strukturname noch nicht festgelegt.</span> <br>
+                &nbsp;* \brief <span id="structDescOut">Struktur nicht beschrieben.</span> <br>
+                <span id="memberDescOut">&nbsp;*<br></span> 
+                &nbsp;*/ <br>
+
+                struct <span id="structNameSpan">type_name</span>
+                {<br>
+                    <span id="membersSpan">&emsp;member_type member_name <br></span>
+                };
+            </div>
+        </main>
+    </div>
+    <script src="struct.js"></script>
+</body>
+</html>

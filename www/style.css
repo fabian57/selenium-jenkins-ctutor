@@ -59,10 +59,27 @@ main > div {
     display: block;
     margin: 10px;
 }
-#add {
+#addParam {
+    display: none;
+}
+
+#rm {
     display: none;
 }
 
 #src {
     padding: 10px;
+}
+
+#h-file,
+#c-file {
+    height: 50%;
+}
+
+#ioOut {
+    display: none;
+}
+
+#unitOut {
+    display: none;
 }

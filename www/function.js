@@ -19,7 +19,7 @@ function changeFuncName() {
     } else {
         document.getElementById('functionNameSpan').innerHTML = funcName;
         document.getElementById('funcNameOut').innerHTML = funcName;
-    }funcNameOut
+    }
 }
 
 function changeFuncDesc() {
@@ -42,13 +42,13 @@ function toggleVisibility() {
 // Use parameters
 
 function showParamDef() {
-    document.getElementById('add').style.display = 'block';
+    document.getElementById('addParam').style.display = 'block';
 }
 
 // Don't use parameters
 
 function hideParamDef() {
-    document.getElementById('add').style.display = 'none';
+    document.getElementById('addParam').style.display = 'none';
     params = {};
     paramsDesc= {};
     document.getElementById('ParamList').options.length = 0;
@@ -195,7 +195,7 @@ function rmType() {
     }
 }
 
-// Put content of #src into temporary testarea and copy to clipboard
+// Put content of #src into temporary textarea and copy to clipboard
 function copy() {
     let textarea = document.createElement('textarea');
     textarea.id = 'temp_element';
